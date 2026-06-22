@@ -8,15 +8,9 @@ runs/
 *.log
 events.out.tfevents*
 
-# Model checkpoints and tensor dumps
+# Model checkpoints
 *.ckpt
-*.pt
 *.pth
-*.npy
-*.npz
-
-# Large local datasets/features
-data/
 
 # OS/editor files
 .DS_Store
