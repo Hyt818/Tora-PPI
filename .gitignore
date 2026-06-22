@@ -1,0 +1,24 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Runtime logs and training outputs
+result/
+runs/
+*.log
+events.out.tfevents*
+
+# Model checkpoints and tensor dumps
+*.ckpt
+*.pt
+*.pth
+*.npy
+*.npz
+
+# Large local datasets/features
+data/
+
+# OS/editor files
+.DS_Store
+.vscode/
+.idea/
