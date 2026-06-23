@@ -1,9 +1,5 @@
-# 用途: SHS27k random seed1 full model 训练配置文件。
-# 输入: train.py --config configs/shs27k_random_seed1.yaml。
-# 输出: 训练参数、输入路径、保存路径和 profiling 开关被 train.py 读取，用于控制一次完整训练。
-
 experiment:
-  name: shs27k_random_seed1_fullmodel
+  name: shs27k_random_seed9
   dataset: SHS27k
   split: random
   seed_num: 9
@@ -11,15 +7,15 @@ experiment:
   cuda: 0
 
 paths:
-  ppi_path: ../data/SHS27k/protein.actions.SHS27k.txt
-  pseq_path: ../data/SHS27k/protein.SHS27k.sequences.dictionary.tsv
-  vec_path: ../data/SHS27k/vec5_CTC.txt
-  p_feat_matrix: ../data/SHS27k/FSP_residue_Embedding.pt
-  p_sequence_feat: ../data/SHS27k/FSP_sequence_Embedding.pt
-  p_adj_matrix: ../data/SHS27k/edge_index_ppr.npy
-  p_adj_arr: ../data/SHS27k/edge_attr_ppr.npy
-  split_path: ../split_data/random/SHS27k_split_random_seed9.json
-  save_path: ./result
+  ppi_path: ./data/SHS27k/protein.actions.SHS27k.txt
+  pseq_path: ./data/SHS27k/protein.SHS27k.sequences.dictionary.tsv
+  vec_path: ./data/SHS27k/vec5_CTC.txt
+  p_feat_matrix: ./data/SHS27k/FSP_residue_Embedding.pt
+  p_sequence_feat: ./data/SHS27k/FSP_sequence_Embedding.pt
+  p_adj_matrix: ./data/SHS27k/edge_index_ppr.npy
+  p_adj_arr: ./data/SHS27k/edge_attr_ppr.npy
+  split_path: ./split_data/random/SHS27k_split_random_seed9.json
+  save_path: ./results
 
 training:
   epoch_num: 500

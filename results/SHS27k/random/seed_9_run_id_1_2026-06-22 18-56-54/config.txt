@@ -1,0 +1,17 @@
+split: random
+seed_num: 9
+run_id: 1
+ppi_path: ../data/SHS27k/protein.actions.SHS27k.txt
+pseq_path: ../data/SHS27k/protein.SHS27k.sequences.dictionary.tsv
+p_feat_matrix: ../data/SHS27k/FSP_residue_Embedding.pt
+p_sequence_feat: ../data/SHS27k/FSP_sequence_Embedding.pt
+p_adj_matrix: ../data/SHS27k/edge_index_ppr.npy
+p_adj_arr: ../data/SHS27k/edge_attr_ppr.npy
+config: configs/shs27k_random_seed9.yaml
+split_path: ../split_data/random/SHS27k_split_random_seed9.json
+learning_rate: 0.00025
+weight_decay: 0.0005
+batch_size: 11000
+max_epochs: 500
+propagation_graph: train-only edges
+validation_edges: target-only, excluded from message passing
