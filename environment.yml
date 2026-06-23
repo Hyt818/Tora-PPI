@@ -1,4 +1,4 @@
-name: PPI
+name: Tora-PPI
 channels:
   - conda-forge
   - bioconda
