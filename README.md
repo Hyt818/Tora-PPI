@@ -93,18 +93,6 @@ cd /path/to/Tora_PPI
 python train.py --config configs/shs27k_random_seed9.yaml
 ```
 
-Available config files in the current repository:
-
-```text
-configs/shs27k_random_seed9.yaml
-```
-
-Example:
-
-```bash
-python train.py --config configs/shs27k_random_seed9.yaml
-```
-
 Command-line arguments after `--config` override YAML values. For example:
 
 ```bash
@@ -131,7 +119,6 @@ gnn_model_train.ckpt
 gnn_model_valid_best.ckpt
 gnn_model_final.ckpt
 ```
-
 
 ## Notes
 
