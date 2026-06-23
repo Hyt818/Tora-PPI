@@ -28,6 +28,8 @@ training:
   weight_decay: 0.0005
   scheduler_factor: 0.5
   scheduler_patience: 10
+  enable_early_stop: false
+  early_stop_lr: 0.000001
 
 profiling:
   enabled: false

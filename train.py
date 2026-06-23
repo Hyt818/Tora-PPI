@@ -89,7 +89,7 @@ parser.add_argument('--split', default='random', type=str,
 
 parser.add_argument('--split_path', default=None, type=str,
                     help='Explicit split JSON path. Overrides split/seed naming convention')
-parser.add_argument('--save_path', default='./result', type=str,
+parser.add_argument('--save_path', default='./results', type=str,
                     help='Save folder')
 parser.add_argument('--epoch_num', default=500, type=int,
                     help='Number of training epochs')
@@ -104,6 +104,10 @@ parser.add_argument('--scheduler_factor', default=0.5, type=float,
                     help='ReduceLROnPlateau factor')
 parser.add_argument('--scheduler_patience', default=10, type=int,
                     help='ReduceLROnPlateau patience')
+parser.add_argument('--enable_early_stop', default=False, type=str2bool,
+                    help='Whether to stop training when learning rate is too small')
+parser.add_argument('--early_stop_lr', default=1e-6, type=float,
+                    help='Learning-rate threshold used when early stopping is enabled')
 
 parser.add_argument('--seed_num', default=1, type=int,
                     help='Random seed')
@@ -371,6 +375,8 @@ def main(args):
         f.write('weight_decay: {}\n'.format(args.weight_decay))
         f.write('batch_size: {}\n'.format(args.batch_size))
         f.write('max_epochs: {}\n'.format(args.epoch_num))
+        f.write('enable_early_stop: {}\n'.format(args.enable_early_stop))
+        f.write('early_stop_lr: {}\n'.format(args.early_stop_lr))
         f.write('propagation_graph: train-only edges\n')
         f.write('validation_edges: target-only, excluded from message passing\n')
 
@@ -402,7 +408,9 @@ def main(args):
         save_path=save_path,
         batch_size=args.batch_size,
         epochs=args.epoch_num,
-        scheduler=scheduler
+        scheduler=scheduler,
+        enable_early_stop=args.enable_early_stop,
+        early_stop_lr=args.early_stop_lr
     )
 
     # ========================================================

@@ -1,4 +1,4 @@
-# Tora-PPI full model
+# Tora-PPI
 
 This folder contains the organized full-model training code copied from
 `/home/huangyuting/PPI`.

@@ -32,6 +32,8 @@ def train(
     batch_size=11000,
     epochs=500,
     scheduler=None,
+    enable_early_stop=False,
+    early_stop_lr=1e-6,
 ):
     global_step = 0
     global_best_valid_f1 = 0.0
@@ -81,11 +83,11 @@ def train(
 
             ppi_loss = loss_fn(output, label)
 
-            lambda1 = 0.02
+            lambda1 = 0.4
             tau = 0.01
             align_loss = info_nce_loss(z_gnn, z_seq, tau=tau)
 
-            lambda2 = 0.02
+            lambda2 = 0.4
             graph_loss = vicreg_loss(g, s)
 
             loss = ppi_loss + lambda1 * align_loss + lambda2 * graph_loss
@@ -202,9 +204,9 @@ def train(
         train_loss = loss_sum / steps
         valid_loss = valid_loss_sum / valid_steps
 
-        if scheduler is not None:
+        if scheduler is not None and enable_early_stop:
             current_lr = scheduler.optimizer.param_groups[0]['lr']
-            if current_lr < 1e-6:
+            if current_lr < early_stop_lr:
                 stop_training = True
 
         if scheduler is not None:
@@ -220,7 +222,7 @@ def train(
 
             if stop_training:
                 print_file(
-                    'Learning rate dropped below 1e-6. Final validation results:',
+                    'Learning rate dropped below {}. Final validation results:'.format(early_stop_lr),
                     save_file_path=result_file_path
                 )
 

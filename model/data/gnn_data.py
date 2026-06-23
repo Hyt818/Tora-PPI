@@ -246,7 +246,7 @@ class GNN_DATA:
 
                 self.ppi_split_dict = {}
                 self.ppi_split_dict['train_index'] = random_list[: int(ppi_num * (1 - test_size))]
-                self.ppi_split_dict['valid_index'] = random_list[int(ppi_num * (1 - test_size)):]
+                self.ppi_split_dict['test_index'] = random_list[int(ppi_num * (1 - test_size)):]
 
                 jsobj = json.dumps(self.ppi_split_dict)
                 with open(train_valid_index_path, 'w') as f:
@@ -281,7 +281,7 @@ class GNN_DATA:
 
                 self.ppi_split_dict = {}
                 self.ppi_split_dict['train_index'] = unselected_edge_index
-                self.ppi_split_dict['valid_index'] = selected_edge_index
+                self.ppi_split_dict['test_index'] = selected_edge_index
 
                 assert len(unselected_edge_index) + len(selected_edge_index) == edge_num
 
