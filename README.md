@@ -2,6 +2,8 @@
 
 Tora-PPI is a topology-aware framework for robust multilabel PPI prediction. By combining PPR-enhanced residue topology, ego-subgraph interaction context, and representation alignment across sequence, structure, and network views, Tora-PPI improves prediction stability under unseen proteins, dataset shifts, species transfer, structural noise, and mutation-induced perturbations.
 
+<img src="Tora-PPI_framework.png" alt="Tora-PPI framework" width="800">
+
 ## Repository Structure
 
 ```text
